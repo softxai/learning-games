@@ -3,105 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Educational Games for Learning English</title>
+    <title>Login Page - Educational Games</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #f4f4f9;
             color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        header {
-            background-color: #4CAF50;
-            color: white;
+        .login-container {
+            background-color: white;
             padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
             text-align: center;
         }
 
-        h1 {
-            margin: 0;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        .game-section {
-            margin-bottom: 30px;
-        }
-
-        .game-section h2 {
+        .login-container h2 {
+            margin-bottom: 20px;
             color: #4CAF50;
         }
 
-        .game-link {
-            display: inline-block;
-            padding: 10px 15px;
-            margin-top: 10px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
-        .game-link:hover {
+        .login-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .login-container input[type="submit"]:hover {
             background-color: #45a049;
         }
 
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 30px;
+        .error-message {
+            color: red;
+            display: none;
+            margin-top: 10px;
         }
 
-        @media (max-width: 768px) {
-            header, main, footer {
-                padding: 15px;
-            }
+        .success-message {
+            display: none;
+            color: green;
+            margin-top: 10px;
+        }
 
-            .game-link {
-                width: 100%;
-                text-align: center;
-            }
+        .content {
+            display: none;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Educational Games for Learning English</h1>
-        <p>Fun, interactive games for elementary school students to improve their English skills!</p>
-    </header>
+    <div class="login-container" id="login-container">
+        <h2>Login to Access Games</h2>
+        <form id="login-form">
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <input type="submit" value="Login">
+        </form>
+        <div class="error-message" id="error-message">Incorrect password. Please try again.</div>
+    </div>
 
-    <main>
-        <section class="game-section">
-            <h2>Game 1: Word Match</h2>
-            <p>Match the English words with their corresponding images. This game helps students practice vocabulary in a fun way!</p>
-            <a href="game1.html" class="game-link">Play Word Match</a>
-        </section>
+    <div class="content" id="content">
+        <h2>Welcome to Educational Games!</h2>
+        <p>You have successfully logged in. Access the games below:</p>
+        <a href="game1.html">Game 1: Word Match</a><br>
+        <a href="game2.html">Game 2: Sentence Builder</a><br>
+        <a href="game3.html">Game 3: Listening Quiz</a>
+    </div>
 
-        <section class="game-section">
-            <h2>Game 2: Sentence Builder</h2>
-            <p>Help students construct proper English sentences by dragging and dropping words in the correct order.</p>
-            <a href="game2.html" class="game-link">Play Sentence Builder</a>
-        </section>
+    <script>
+        const correctPassword = "educate123";  // Set your desired password here
 
-        <section class="game-section">
-            <h2>Game 3: Listening Quiz</h2>
-            <p>Students will listen to words or short phrases and choose the correct written form.</p>
-            <a href="game3.html" class="game-link">Play Listening Quiz</a>
-        </section>
-    </main>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const enteredPassword = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            const loginContainer = document.getElementById('login-container');
+            const content = document.getElementById('content');
 
-    <footer>
-        <p>&copy; 2024 Educational Games for Learning English | Created by [Your Name]</p>
-    </footer>
+            if (enteredPassword === correctPassword) {
+                loginContainer.style.display = 'none';
+                content.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
 
 </body>
 </html>
+
